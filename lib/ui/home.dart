@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tp2/ui/card/card1.dart';
 import 'package:tp2/ui/card/card2.dart';
 import 'package:tp2/ui/card/card3.dart';
+import 'package:tp2/ui/settings/settings.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -17,7 +18,8 @@ class _HomeState extends State<Home> {
   static List<Widget> pages = <Widget>[
     Screen1(),
     Screen2(),
-    Screen3()
+    Screen3(),
+    EcranSettings()
   ];
 
   void _onItemTapped(int index) {
@@ -42,7 +44,6 @@ class _HomeState extends State<Home> {
         BottomNavigationBarItem(
           icon: Icon(Icons.home),
           label: 'Home',
-
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.business),
@@ -51,6 +52,10 @@ class _HomeState extends State<Home> {
         BottomNavigationBarItem(
           icon: Icon(Icons.school),
           label: 'School',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.settings),
+          label: 'Settings',
         ),
       ],
     )

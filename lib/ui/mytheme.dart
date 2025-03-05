@@ -100,6 +100,7 @@ class MyTheme {
       ),
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         selectedItemColor: Colors.green,
+        unselectedItemColor: Colors.white,
       ),
       textTheme: darkTextTheme,
     );

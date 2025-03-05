@@ -26,6 +26,17 @@ class Task {
     );
   }
 
+  factory Task.Null() {
+    return Task(
+      id: 0,
+      title: '',
+      tags: [],
+      nbhours: 0,
+      difficulty: 0,
+      description: ''
+    );
+  }
+
   static List<Task> generateTask(int i) {
     List<Task> tasks = [];
     for (int n = 0; n < i; n++) {

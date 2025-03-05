@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:tp2/api/myapi/myapi.dart';
+import 'package:tp2/models/task.dart';
+import 'detail_task.dart';
 
 class Screen2 extends StatelessWidget {
 
-  const Screen2({super.key});
+  final MyApi myApi = MyApi();
+
+  Screen2({super.key});
 
   @override
   Widget build(BuildContext context) {
-
-    final myApi = MyApi();
 
     return FutureBuilder(
       future: myApi.getTasks(),
@@ -50,6 +52,14 @@ class Screen2 extends StatelessWidget {
                       ),
                     ],
                   ),
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => DetailTaskScreen(data: task ?? Task.Null())
+                        )
+                    );
+                  },
                 ),
               );
             },
