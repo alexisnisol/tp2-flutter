@@ -37,6 +37,13 @@ class Task {
     );
   }
 
+  static int nb = 1;
+
+  factory Task.newTask() {
+    nb++;
+    return Task(id: nb, title: 'title $nb', tags: ['tags $nb'], nbhours: nb, difficulty: nb%5, description: 'description $nb');
+  }
+
   static List<Task> generateTask(int i) {
     List<Task> tasks = [];
     for (int n = 0; n < i; n++) {

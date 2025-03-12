@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:settings_ui/settings_ui.dart';
+import 'package:tp2/repository/settings_repository.dart';
+import 'package:tp2/viewmodels/settingsviewmodels.dart';
 
 import '../mytheme.dart';
 
@@ -30,19 +33,15 @@ class _EcranSettingsState extends State<EcranSettings> {
               title: const Text('Theme'),
               tiles: [
                 SettingsTile.switchTile(
-                  initialValue: _dark,
-                  onToggle: _onToggle,
+                  initialValue: context.watch<SettingsViewModel>().isDark,
+                  onToggle: (bool value) {
+                    context.read<SettingsViewModel>().isDark = value;
+                  },
                   title: const Text('Dark mode'),
                   leading: const Icon(Icons.invert_colors),)
               ])
         ],
       ),
     );
-  }
-  _onToggle(bool value) {
-    debugPrint('value $value');
-    setState(() {
-      _dark = !_dark;
-    });
   }
 }
