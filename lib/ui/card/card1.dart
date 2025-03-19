@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:tp2/models/task.dart';
+import 'package:tp2/viewmodels/taskviewmodel.dart';
+
+import '../addtask2.dart';
+import 'detail_task.dart';
 
 class Screen1 extends StatefulWidget {
   const Screen1({super.key});
@@ -10,7 +15,7 @@ class Screen1 extends StatefulWidget {
 
 class _Screen1State extends State<Screen1> {
 
-  List<Task> tasks = Task.generateTask(5);
+  late List<Task> tasks;
 
   void _onAddTask(Task task) {
     setState(() {
@@ -20,6 +25,7 @@ class _Screen1State extends State<Screen1> {
 
   @override
   Widget build(BuildContext context) {
+    tasks = context.watch<TaskViewModel>().liste;
     return Container(
       color: Colors.lightGreen,
       child: ListView.builder(
@@ -40,10 +46,8 @@ class _Screen1State extends State<Screen1> {
                         IconButton(
                           icon: Icon(Icons.edit),
                           onPressed: () {
-                            print('Edit ${task.id}');
-                            var idTask = tasks.length+1;
-                            _onAddTask(Task(id: idTask, title: "title", tags: ["tags"], nbhours: 5, difficulty: 4, description: "description"));
-
+                            Navigator.push(context, MaterialPageRoute(
+                                builder: (context) => AddTaskV2(task: task)));
                           },
                         ),
                         IconButton(
@@ -58,6 +62,14 @@ class _Screen1State extends State<Screen1> {
                         ),
                       ],
                     ),
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => DetailTaskScreen(data: task ?? Task.Null())
+                        )
+                    );
+                  },
                 )
             );
           }

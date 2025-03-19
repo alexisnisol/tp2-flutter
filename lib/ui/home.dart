@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:tp2/ui/addtask.dart';
+import 'package:tp2/ui/addtask2.dart';
 import 'package:tp2/ui/card/card1.dart';
 import 'package:tp2/ui/card/card2.dart';
 import 'package:tp2/ui/card/card3.dart';
 import 'package:tp2/ui/settings/settings.dart';
+
+import '../models/task.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -58,7 +62,13 @@ class _HomeState extends State<Home> {
           label: 'Settings',
         ),
       ],
-    )
+    ),
+        floatingActionButton: _selectedIndex==0?FloatingActionButton(
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(
+                builder: (context) => AddTaskV2(task: Task.Null())));
+          },
+          child: Icon(Icons.add),):const SizedBox.shrink(),
     );
   }
 }

@@ -28,7 +28,7 @@ class Task {
 
   factory Task.Null() {
     return Task(
-      id: 0,
+      id: -1,
       title: '',
       tags: [],
       nbhours: 0,
@@ -42,6 +42,15 @@ class Task {
   factory Task.newTask() {
     nb++;
     return Task(id: nb, title: 'title $nb', tags: ['tags $nb'], nbhours: nb, difficulty: nb%5, description: 'description $nb');
+  }
+  
+  factory Task.createTask(String title, List<String> tags, int nbhours, int difficulty, String description) {
+    nb++;
+    return Task(id: nb, title: title, tags: tags, nbhours: nbhours, difficulty: difficulty, description: description);
+  }
+
+  factory Task.createTaskWithId(int id, String title, List<String> tags, int nbhours, int difficulty, String description) {
+    return Task(id: id, title: title, tags: tags, nbhours: nbhours, difficulty: difficulty, description: description);
   }
 
   static List<Task> generateTask(int i) {
