@@ -70,7 +70,7 @@ class _AddTaskV2State extends State<AddTaskV2> {
                     onPressed: () {
                       if (_formKey.currentState!.saveAndValidate()) {
                         if (widget.task.id == -1) {
-                          context.read<TaskViewModel>().updateTask(
+                          context.read<TaskViewModel>().insertTask(
                               Task.createTask(
                                   _formKey.currentState!.fields['Title']!.value,
                                   _formKey.currentState!.fields['Tags']!.value.split(','),
@@ -79,7 +79,7 @@ class _AddTaskV2State extends State<AddTaskV2> {
                                   _formKey.currentState!.fields['Description']!.value
                               ));
                         } else {
-                          context.read<TaskViewModel>().insertTask(
+                          context.read<TaskViewModel>().updateTask(
                               Task.createTaskWithId(
                                   widget.task.id,
                                   _formKey.currentState!.fields['Title']!.value,
@@ -93,7 +93,7 @@ class _AddTaskV2State extends State<AddTaskV2> {
                         Navigator.pop(context);
                       }
                     },
-                    child: Text(widget.task.id == 0 ? 'Ajouter' : 'Modifier'))
+                    child: Text(widget.task.id == -1 ? 'Ajouter' : 'Modifier'))
               ],
             )),
       ),

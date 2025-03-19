@@ -15,10 +15,10 @@ class TaskViewModel extends ChangeNotifier {
   }
 
   void updateTask(Task task) {
-    var ind1 = liste.indexOf(task);
-    var ind2 = liste.indexWhere((element) => element.id == task.id);
-    if (ind2 != -1) {
-      liste[ind2] = task;
+    //var index = liste.indexOf(task);
+    var index = liste.indexWhere((element) => element.id == task.id);
+    if (index != -1) {
+      liste[index] = task;
       notifyListeners();
     }
   }
