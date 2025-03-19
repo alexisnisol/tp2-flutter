@@ -1,5 +1,3 @@
-import 'dart:nativewrappers/_internal/vm/lib/internal_patch.dart';
-
 import 'package:flutter/material.dart';
 
 import '../models/task.dart';
@@ -20,7 +18,7 @@ class TaskViewModel extends ChangeNotifier {
     var ind1 = liste.indexOf(task);
     var ind2 = liste.indexWhere((element) => element.id == task.id);
     if (ind2 != -1) {
-      liste.insert(ind2, task);
+      liste[ind2] = task;
       notifyListeners();
     }
   }
